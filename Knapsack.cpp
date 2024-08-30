@@ -3,9 +3,11 @@
 using namespace std;
 class knpsck{
     public:
-    int val,wt,ratio,n,x;
+    float val,wt,ratio,n,x,profit,capacity,wtsum,y,diff,fraction;
     int values[10];
     map<int,int>mps;
+     map<int,int>mps2;
+
     void letsgo()
     {
         cout<<"enter the number of elements";
@@ -19,15 +21,35 @@ class knpsck{
             ratio=wt/val;
             values[i]=ratio;
             mps[ratio]=wt;
+            mps2[ratio]=val;
         }
     }
     void show()
-    {
-        for(int i=0;i<n;i++)
+    {profit=0;
+    wtsum=0;
+    cout<<"enter the capacity";
+    cin>>capacity;
+        for(int i=n;i>=1;i--)
         {
             x=values[i];
-            cout<<mps[ratio];
+            // cout<<mps[i];
+            wtsum=wtsum+mps[i];
+            if(wtsum<capacity)
+            {
+                profit=profit+mps2[i];
+            }
+            else if(wtsum>capacity)
+            { 
+              diff=wtsum-capacity;
+              fraction;
+              fraction=diff/mps[i];
+              cout<<fraction;
+            //   y=fraction*mps2[i];
+            //   profit=profit+y;
+}
         }
+    
+        // cout<<profit;
     }
 
 };
